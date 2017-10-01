@@ -1,4 +1,8 @@
-import sys, pygame
+import sys
+import pygame
 
-def main():
-    print(xd);
+
+class Telrus:
+    def __init__(self):
+        print( '[Telrus] Initalizing Main Class' );
+        pygame.init();
