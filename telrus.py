@@ -8,7 +8,7 @@ class Telrus:
         print( '[Telrus] Initalizing Main Class' );
         pygame.init();
         pygame.font.init();
-        self.width = 600;
+        self.width = 1000;
         self.height = 800;
         self.screen = pygame.display.set_mode((self.width, self.height))
 
