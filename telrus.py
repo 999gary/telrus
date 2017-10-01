@@ -15,3 +15,7 @@ class TelrusGameInstance:
     def __init__(self):
         print( '[Telrus] New Game Board Instance Thing' );
         self.player = ''
+
+class Player:
+    def __init__(self):
+        self.name = ''
