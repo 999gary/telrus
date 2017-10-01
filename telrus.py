@@ -1,15 +1,22 @@
 import sys
 import pygame
 import math
-
+true = True;
 
 class Telrus:
     def __init__(self):
         print( '[Telrus] Initalizing Main Class' );
         pygame.init();
         pygame.font.init();
-    def run():
+        self.width = 600;
+        self.height = 800;
+        self.screen = pygame.display.set_mode((self.width, self.height))
+
+    def run(self):
         print( 'lmao this is so not finished' );
+        while( true ):
+            'lmaos'
+
 
 
 class TelrusGameInstance:
@@ -31,4 +38,5 @@ class Player:
 
 
 
-mainclass = Telrus();
+main = Telrus();
+main.run();
