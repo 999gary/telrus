@@ -1,2 +1,2 @@
 # telrus
-multiplayer github clone made in python
+multiplayer tetris clone made in python
