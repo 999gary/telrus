@@ -4,7 +4,7 @@ import math
 import os
 import ConfigParser as cp
 true = True;
-false = False; #xd
+false = False;  #xd
 
 
 class Telrus:
@@ -12,16 +12,32 @@ class Telrus:
         print( '[Telrus] Initalizing Main Class' );
         pygame.init();
         pygame.font.init();
-        self.width = config.config.getint('Window', 'width');
-        self.height = config.config.getint('Window', 'height');
+        self.width = config.getint('Window', 'width')
+        self.height = config.getint('Window', 'height')
         self.screen = pygame.display.set_mode((self.width, self.height))
+        self.shouldend = false
         self.maintimer = pygame.time.Clock()
 
+    def exit(self):
+        print('[Telrus] Exiting.')
+        self.shouldend == true;
+        pygame.quit();
+        sys.exit();
 
     def run(self):
-        print( 'lmao this is so not finished' );
-        while( true ):
-            self.maintimer.tick(config.config.getint('Window', 'fps'))
+        #print( 'lmao this is so not finished' )
+        while( not self.shouldend ):
+
+
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        self.exit();
+                    else:
+                        return event.key;
+
+
+            self.maintimer.tick(config.getint('Window', 'fps'))
 
 
 
@@ -46,12 +62,12 @@ class TelrusConfig:
 
     def __init__(self):
         print( '[Telrus] Config Loaded.');
-        if ~os.path.isfile('config.cfg'):
+        if not os.path.isfile('config.cfg'):
             self.firstopen = true;
+        else:
+            self.firstopen = false;
 
         #TODO Make this process more streamlined
-        with open( 'config.cfg', 'wb+' ) as cfg:
-            self.configfile = cfg;
         self.config = cp.RawConfigParser();
         if self.firstopen:
             self.config.add_section('Window');
@@ -60,11 +76,17 @@ class TelrusConfig:
             self.config.set('Window', 'height', '800');
             self.config.write(open( 'config.cfg', 'wb+' ));
         else:
-            self.config.read(open( 'config.cfg', 'r'));
+            self.config.read('config.cfg');
+
+    def getint(self, s, b):
+        return self.config.getint(s, b);
+    def getbool(self, s, b):
+        return self.config.getbool(s, b);
 
 
 
 
-config = TelrusConfig();
-main = Telrus();
-main.run();
+if __name__ == '__main__':
+    config = TelrusConfig();
+    main = Telrus();
+    main.run();
