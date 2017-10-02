@@ -2,7 +2,7 @@ import sys
 import pygame
 import math
 import os
-import ConfigParser as cp
+import configparser as cp
 true = True;
 false = False;  #xd
 
@@ -68,20 +68,20 @@ class TelrusConfig:
             self.firstopen = false;
 
         #TODO Make this process more streamlined
-        self.config = cp.RawConfigParser();
+        self.config = cp.ConfigParser();
         if self.firstopen:
-            self.config.add_section('Window');
-            self.config.set('Window', 'fps', '60');
-            self.config.set('Window', 'width', '1000');
-            self.config.set('Window', 'height', '800');
-            self.config.write(open( 'config.cfg', 'wb+' ));
+            self.config['Window'] = {};
+            self.config['Window']['fps'] = '60';
+            self.config['Window']['width'] = '1000';
+            self.config['Window']['height'] = '800';
+            self.config.write(open( 'config.cfg', 'w+' ));
         else:
             self.config.read('config.cfg');
 
     def getint(self, s, b):
-        return self.config.getint(s, b);
+        return self.config.getint( s, b )
     def getbool(self, s, b):
-        return self.config.getbool(s, b);
+        return self.config.getboolean( s, b )
 
 
 
