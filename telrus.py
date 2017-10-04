@@ -3,6 +3,7 @@ import pygame
 import math
 import os
 import configparser as cp
+import redam
 true = True;
 false = False;  #xd
 
@@ -89,4 +90,5 @@ class TelrusConfig:
 if __name__ == '__main__':
     config = TelrusConfig();
     main = Telrus();
+    redamc = redam.Redam(main);
     main.run();
