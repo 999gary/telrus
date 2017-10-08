@@ -11,11 +11,11 @@ false = False;  #xd
 class Telrus:
     def __init__(self):
         print( '[Telrus] Initalizing Main Class' );
-        pygame.init();
+        self.pygame = pygame.init();
         pygame.font.init();
         self.width = config.getint('Window', 'width')
         self.height = config.getint('Window', 'height')
-        self.screen = pygame.display.set_mode((self.width, self.height))
+        self.surface = pygame.display.set_mode((self.width, self.height))
         self.shouldend = false
         self.maintimer = pygame.time.Clock()
 
@@ -37,6 +37,11 @@ class Telrus:
                     else:
                         return event.key;
 
+            #c = redamc.createObject('gbox')
+            #redamc.drawhook(c);
+            #redamc.updatehook();
+            #pushing to master with major issues still in place, I see no issues :)
+            pygame.draw.rect(self.surface, (255, 255, 255), (100, 100, 100, 100), 0)
 
             self.maintimer.tick(config.getint('Window', 'fps'))
 
