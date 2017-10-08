@@ -9,24 +9,25 @@ class Redam:
         #self.uielements = {};
         self.pygame = telrus.pygame;
 
-    def createObject( self, types ):
+    def createObject( self, types, h, w, x, y ):
+
         if(types=='gbox'):
+            return gbox( h, w, x, y );
 
-            #HACK please for the love of god make me change this next part very quickly
-            return gbox( 10, 10, 100, 100, self.pygame)
+    def requestObject(self, id):
 
-    def requestobject(self, id):
         return self.uielements[id]
-    def drawhook(self, thing):
 
-            thing.draw(self.telrus.surface)
+    def drawHook(self, thing):
 
-    def updatehook():
+            thing.draw(self.telrus.surface);
+
+    def updateHook():
+
         print('nah')
 
 class UI:
-    def __init__( self, h, w, x, y, pygamec ):
-        self.pygamei = pygamec
+    def __init__( self, h, w, x, y ):
         self.x = x
         self.y = y
         self.h = h
@@ -41,21 +42,6 @@ class UI:
     def setW(self, s):
         self.w = s;
 
-class gbox:
-    def __init__( self, h, w, x, y, pygamec ):
-        self.pygamei = pygamec
-        self.x = x
-        self.y = y
-        self.h = h
-        self.w = w
-        self.ShouldD = true;
-    def setX(self, s):
-        self.x = s;
-    def setY(self, s):
-        self.y = s;
-    def setH(self, s):
-        self.h = s;
-    def setW(self, s):
-        self.w = s;
+class gbox(UI):
     def draw(self, hook):
-        self.pygamei.draw.rect(hook, (255, 255, 255), (self.x, self.y, self.h, self.w))
+        pygame.draw.rect(hook, (255, 255, 255), (self.x, self.y, self.h, self.w))

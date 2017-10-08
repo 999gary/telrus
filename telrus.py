@@ -27,6 +27,7 @@ class Telrus:
 
     def run(self):
         #print( 'lmao this is so not finished' )
+        self.c = redamc.createObject('gbox', 100, 100, 100, 100)
         while( not self.shouldend ):
 
 
@@ -37,11 +38,11 @@ class Telrus:
                     else:
                         return event.key;
 
-            #c = redamc.createObject('gbox')
-            #redamc.drawhook(c);
-            #redamc.updatehook();
+            pygame.display.update()
+            redamc.drawHook(self.c);
+            #redamc.updateHook();
             #pushing to master with major issues still in place, I see no issues :)
-            pygame.draw.rect(self.surface, (255, 255, 255), (100, 100, 100, 100), 0)
+            #pygame.draw.rect(self.surface, (255, 255, 255), (100, 100, 100, 100), 0)
 
             self.maintimer.tick(config.getint('Window', 'fps'))
 
